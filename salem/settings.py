@@ -96,7 +96,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 if config('MODE')=="dev":
    DATABASES = {
        'default': {
-           'ENGINE': 'django.db.backends.sqlite3',
+           'ENGINE': 'django.db.backends.postgresql_psycopg2',
            'NAME': config('DB_NAME'),
            'USER': config('DB_USER'),
            'PASSWORD': config('DB_PASSWORD'),
@@ -105,6 +105,17 @@ if config('MODE')=="dev":
        }
        
    }
+
+else:
+
+ DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': 'property',
+         'USER':'salem',
+        ' PASSWORD':'salem18'
+     }
+}
 # production
 else:
    DATABASES = {
@@ -131,13 +142,13 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'property',
+#  DATABASES = {
+#      'default': {
+#          'ENGINE': 'django.db.backends.sqlite3',
+#          'NAME': 'property',
 #         'USER':'salem',
 #         'PASSWORD':'salem18'
-#     }
+#      }
 # }
 
 

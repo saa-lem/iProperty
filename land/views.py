@@ -9,7 +9,7 @@ from rest_framework.generics import GenericAPIView,RetrieveAPIView ,CreateAPIVie
 from rest_framework.mixins import ListModelMixin,CreateModelMixin,UpdateModelMixin
 from rest_framework.response import Response
 from rest_framework.views import APIView
-# from rest_framework import filters
+from rest_framework import filters
 from rest_framework import  mixins,generics
 from django.http import HttpResponse
 from django.urls import reverse
@@ -40,9 +40,9 @@ class PropertytDestroyAPIView(DestroyAPIView):
   serializer_class = PropertyDeleteSerializer
 class UserPropertyListView(generics.ListAPIView):
     queryset = Property.objects.all()
-    serializer_class = SearchFilter
-    # filter_backends = [filters.SearchFilter]
-    # search_fields = ['name','location']
+    serializer_class = PropertySerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['name','location']
   
 
 

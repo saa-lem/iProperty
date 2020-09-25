@@ -15,7 +15,7 @@ from django.http import HttpResponse
 from django.urls import reverse
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .serializers import PropertySerializer,PropertyCreateSerializer,PropertyDeleteSerializer,PropertyUpdateSerializer
+from .serializers import PropertySerializer,PropertyCreateSerializer,PropertyDeleteSerializer,PropertyUpdateSerializer,SearchFilter
 from .models import Property
 from .forms import  UserUpdateForm, PostPropertyForm
 from itertools import chain
@@ -40,9 +40,9 @@ class PropertytDestroyAPIView(DestroyAPIView):
   serializer_class = PropertyDeleteSerializer
 class UserPropertyListView(generics.ListAPIView):
     queryset = Property.objects.all()
-    serializer_class = PropertySerializer
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['name','location']
+    serializer_class = SearchFilter
+    # filter_backends = [filters.SearchFilter]
+    # search_fields = ['name','location']
   
 
 

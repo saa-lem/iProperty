@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Property
-
+import django_filters
 
 
 class PropertySerializer(serializers.Serializer):
@@ -29,3 +29,7 @@ class PropertyDeleteSerializer(serializers.ModelSerializer):
 
         fields=['name','description','price','location','image'] 
 
+class SearchFilter(django_filters.FilterSet):
+    class Meta:
+        model = Property
+        fields = ['name', 'location']
